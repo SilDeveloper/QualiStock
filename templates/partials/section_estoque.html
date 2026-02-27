@@ -1,0 +1,181 @@
+<!-- ================= SEÇÃO ESTOQUE ================= -->
+<section id="estoque-section" style="display:none;">
+
+    <div id="alerta-ia"
+         class="alert alert-info d-none shadow-sm d-print-none border-start border-4">
+        <strong>🤖 Analista IA:</strong>
+        <span id="msg-ia"></span>
+    </div>
+
+    <div class="row">
+
+        <!-- COLUNA ESQUERDA -->
+        <div class="col-md-7">
+
+            <div class="card p-3 mb-4 d-print-none">
+                <h5 class="fw-bold mb-3">🛒 Frente de Caixa</h5>
+
+                <div class="row g-2">
+
+                    <div class="col-md-6">
+                        <select id="select-produto" class="form-select">
+                            <option value="" selected disabled>
+                                Selecionar Produto ou Combo...
+                            </option>
+
+                            {% for p in produtos %}
+                            <option value="produto-{{ p.id }}"
+                                data-tipo="produto"
+                                data-nome="{{ p.nome }}"
+                                data-qtd="{{ p.qtd }}"
+                                data-preco="{{ p.preco }}">
+                                🛒 {{ p.nome }} (Disp: {{ p.qtd }})
+                            </option>
+                            {% endfor %}
+
+                            {% for c in combos %}
+                            <option value="combo-{{ c.id }}"
+                                data-tipo="combo"
+                                data-nome="{{ c.nome }}"
+                                data-preco="{{ c.preco_final }}"
+                                data-desconto="{{ c.desconto }}"
+                                data-descricao="{{ c.descricao }}">
+                                🎁 {{ c.nome }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="number"
+                               id="venda-qtd"
+                               class="form-control"
+                               value="1"
+                               min="1">
+                    </div>
+
+                    <div class="col-md-3">
+                        <button class="btn btn-dark w-100 fw-bold"
+                                onclick="adicionarAoCarrinho()">
+                            + ADD
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="area-carrinho" class="mt-4 d-none">
+                    <ul id="lista-carrinho"
+                        class="list-group list-group-flush mb-3"></ul>
+
+                    <div id="total-carrinho"
+                        class="mb-3 text-end fw-bold fs-5 d-none">
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-success w-100 fw-bold"
+                                onclick="finalizarVenda()">
+                                FINALIZAR VENDA
+                        </button>
+                        <button class="btn btn-danger w-100 fw-bold"
+                                onclick="cancelarVenda()">
+                                CANCELAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2 px-1 text-white">
+                <h6 class="fw-bold mb-0">
+                    📋 Últimos Cupons
+                    (<span id="contador-notas">0</span>/10)
+                </h6>
+
+                <span id="progresso-meta"
+                      class="badge bg-warning text-dark d-none">
+                    🚀 Rumo à Meta!
+                </span>
+            </div>
+
+            <div id="historico-notas"
+                 class="d-flex flex-column gap-3 mb-4"
+                 style="max-height:500px; overflow-y:auto;">
+            </div>
+
+            <div class="d-flex justify-content-center gap-2 mb-5 d-print-none">
+                <button class="btn btn-sm btn-primary"
+                        onclick="imprimirTodas()">
+                    🖨️ Imprimir Todas
+                </button>
+
+                <button id="btn-limpar-tudo"
+                        class="btn btn-sm btn-danger"
+                        onclick="limparHistorico()">
+                    🗑️ Limpar Notas
+                </button>
+            </div>
+
+        </div>
+
+        <!-- COLUNA DIREITA -->
+        <div class="col-md-5 d-print-none">
+
+            <div class="card p-3 mb-4">
+                <h5 class="fw-bold text-primary mb-3">
+                    📊 Estoque Atual
+                </h5>
+                <table class="table table-sm">
+                    <tbody id="tabela-estoque"></tbody>
+                </table>
+            </div>
+
+            <div class="card p-3">
+                <h5 class="fw-bold text-success mb-3">
+                    🔄 Reposição
+                </h5>
+
+                <div class="card p-3">
+
+                    <div class="row g-2 mb-3">
+
+                        <div class="col-7">
+                            <select id="select-reposicao" class="form-select form-select-sm">
+                                <option selected disabled>Escolher produto...</option>
+                            </select>
+                        </div>
+
+                        <div class="col-3">
+                            <input type="number"
+                                id="qtd-reposicao"
+                                min="1"
+                                class="form-control form-control-sm"
+                                placeholder="Qtd">
+                        </div>
+
+                        <div class="col-2">
+                            <button class="btn btn-primary btn-sm w-100"
+                                    onclick="adicionarItemReposicao()">
+                                +
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div id="lista-reposicao"
+                        class="small text-muted mb-3 text-center">
+                        Nenhum item selecionado.
+                    </div>
+
+                    <button class="btn btn-success w-100 fw-bold"
+                            onclick="confirmarReposicao()">
+                        PROCESSAR ENTRADA
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

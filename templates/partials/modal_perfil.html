@@ -1,0 +1,42 @@
+<div class="modal fade" id="modalPerfil" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content card shadow-lg border-0">
+            <div class="modal-body">
+                <form id="form-perfil">
+
+                    <h5 class="fw-bold mb-3">Editar Perfil</h5>
+
+                    <div class="mb-2">
+                        <label class="small fw-bold">Nome</label>
+                        <input type="text"
+                               id="perfil-nome"
+                               class="form-control"
+                               value="{{ session['nome_completo'] }}">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="small fw-bold">Matrícula</label>
+                        <input type="text"
+                               id="perfil-matricula"
+                               class="form-control"
+                               value="{{ session['matricula'] }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="small fw-bold">Cargo</label>
+                        <input type="text"
+                               id="perfil-cargo"
+                               class="form-control"
+                               value="{{ session['cargo'] }}">
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100 fw-bold">
+                        Salvar Alterações
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

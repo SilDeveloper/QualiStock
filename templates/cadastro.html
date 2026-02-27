@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - QualiStock</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .footer {
+            background: #0f172a !important;
+            color: #cbd5e1 !important;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4 shadow-lg border-0">
+
+                    <div class="text-center mb-3">
+                        <img src="https://qualificamarica.com.br/wp-content/uploads/2024/10/icone-qualifica-marica.webp"
+                             style="height:70px;">
+                    </div>
+
+                    <h2 class="text-center fw-bold mb-2">Criar Conta</h2>
+                    <p class="text-center text-muted small mb-4">
+                        Junte-se ao QualiStock e gerencie seu estoque com IA.
+                    </p>
+
+                    <form id="form-cadastro">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nome Completo</label>
+                            <input type="text" name="nome" class="form-control"
+                                   placeholder="Ex: João Silva" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">E-mail</label>
+                            <input type="email" name="email" class="form-control"
+                                   placeholder="email@exemplo.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Usuário</label>
+                            <input type="text" name="usuario" class="form-control"
+                                   placeholder="Escolha um nome de usuário" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold">Senha</label>
+                                <input type="password" id="senha" name="senha"
+                                       class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold">Confirmar Senha</label>
+                                <input type="password" id="confirma_senha"
+                                       class="form-control" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                            Finalizar Cadastro
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <span class="small text-muted">Já possui uma conta?</span>
+                            <a href="/login" class="text-decoration-none small fw-bold">
+                                Faça Login
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer py-3 mt-auto">
+    <div class="container text-center small">
+        <div>
+            <strong class="text-white">QualiStock IA</strong>
+            <span class="opacity-75"> • Sistema Inteligente de Estoque</span>
+        </div>
+        <div class="opacity-75">
+            Versão 3.0.1 • Build 2026
+        </div>
+        <div class="opacity-50">
+            © 2026 Qualifica Maricá • Equipe Erro 404
+        </div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('form-cadastro').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const nome = this.nome.value.trim();
+    const email = this.email.value.trim();
+    const usuario = this.usuario.value.trim();
+    const senha = document.getElementById('senha').value;
+    const confirma = document.getElementById('confirma_senha').value;
+
+    // 🔎 VALIDAÇÕES
+
+    if (nome.length < 3) {
+        return Swal.fire("Erro", "Nome muito curto.", "warning");
+    }
+
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmail.test(email)) {
+        return Swal.fire("Erro", "E-mail inválido.", "warning");
+    }
+
+    if (usuario.length < 4) {
+        return Swal.fire("Erro", "Usuário deve ter pelo menos 4 caracteres.", "warning");
+    }
+
+    if (senha.length < 6) {
+        return Swal.fire("Erro", "Senha deve ter no mínimo 6 caracteres.", "warning");
+    }
+
+    if (senha !== confirma) {
+        return Swal.fire("Erro", "As senhas não coincidem.", "warning");
+    }
+
+    const formData = new FormData(this);
+
+    const res = await fetch('/registrar', {
+        method: 'POST',
+        body: formData
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Cadastro realizado!',
+            text: 'E-mail de confirmação enviado (simulação).',
+            timer: 2500,
+            showConfirmButton: false
+        }).then(() => {
+            window.location.href = '/login';
+        });
+    } else {
+        Swal.fire("Erro", data.mensagem || "Erro no cadastro.", "error");
+    }
+});
+</script>
+
+</body>
+</html>

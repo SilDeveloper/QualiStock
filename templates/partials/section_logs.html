@@ -1,0 +1,48 @@
+<section id="logs-section" style="display:none;">
+
+    <div class="card p-4 shadow-sm">
+
+        <h5 class="fw-bold mb-3">
+            📜 Logs do Sistema
+        </h5>
+
+        <div class="mb-3">
+            <span class="badge bg-primary me-2" id="total-logs">
+                0 Registros
+            </span>
+        </div>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Data/Hora</th>
+                    <th>Usuário</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-logs">
+                <tr>
+                    <td colspan="3" class="text-muted text-center">
+                        Nenhum registro encontrado.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 🔴 BOTÃO IGUAL AO DO HISTÓRICO -->
+        <div class="d-flex justify-content-end mt-3">
+
+            <button class="btn btn-outline-primary btn-sm me-2"
+                onclick="gerarPdfLogs()">
+            📄 Gerar PDF
+        </button>
+
+            <button class="btn btn-outline-danger btn-sm"
+                    onclick="limparLogs()">
+                🗑️ Limpar Logs
+            </button>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,215 @@
+<!-- ================= SEÇÃO PROMOÇÕES ================= -->
+<section id="promocoes-section" style="display:none;">
+
+    <h4 class="fw-bold mb-4">📊 Gestão de Produtos</h4>
+
+    <div class="card p-4 mb-4">
+        <h5 class="fw-bold mb-3">Cadastrar Produto</h5>
+
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <input type="text" id="novo-nome" class="form-control"
+                       placeholder="Nome do Produto">
+            </div>
+
+            <div class="col-md-3">
+                <input type="number" id="novo-preco" class="form-control"
+                       placeholder="Preço (ex: 19,90)" step="0.01">
+            </div>
+
+            <div class="col-md-3">
+                <input type="number" id="nova-qtd" class="form-control"
+                       placeholder="Quantidade">
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-success w-100"
+                        onclick="cadastrarProduto()">
+                    Salvar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card p-4">
+        <h5 class="fw-bold text-center mb-3"> 📋 Produtos Cadastrados</h5>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th class="text-center">Produto</th>
+                    <th class="text-center">Preço</th>
+                    <th class="text-center">Qtd</th>
+                    <th class="text-center">Promoção</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-produtos"></tbody>
+        </table>
+    </div>
+
+    <div id="area-produtos-inativos" class="card p-4 mt-4 d-none">
+        <h5 class="fw-bold text-center mb-3">
+            🗑️ Produtos Inativos
+        </h5>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th class="text-center">Produto</th>
+                    <th class="text-center">Preço</th>
+                    <th class="text-center">Qtd Inicial</th>
+                    <th class="text-center">Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-produtos-inativos"></tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <h4 class="fw-bold mb-4">🎁 Promoções / Combos</h4>
+
+    <div class="row g-4">
+
+        <!-- DESCONTO RELÂMPAGO -->
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+
+                <h6 class="fw-bold text-primary mb-3">
+                    ⚡ Aplicar Desconto Relâmpago
+                </h6>
+
+                <div class="mb-3">
+                    <label class="fw-bold small">Selecionar Produto</label>
+                    <select class="form-select" id="select-desconto">
+                        <option selected disabled>Escolher produto...</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold small">Porcentagem de Desconto</label>
+
+                    <div class="input-group">
+                        <input type="number"
+                               id="input-desconto"
+                               class="form-control"
+                               placeholder="Ex: 10">
+                        <span class="input-group-text">%</span>
+                    </div>
+                
+                    <small class="text-muted d-block mt-2">
+                        Digite 0% para remover o desconto.
+                    </small>
+                </div>
+
+                <div class="border-top pt-3 mb-3">
+
+                    <div class="d-flex justify-content-between">
+                        <span>Preço Original:</span>
+                        <span id="desconto-preco-original">R$ 0,00</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between fw-bold text-success">
+                        <span>Preço Final:</span>
+                        <span id="desconto-preco-final">R$ 0,00</span>
+                    </div>
+
+                    <br>
+
+                    <button class="btn btn-primary w-100 fw-bold"
+                            onclick="aplicarDescontoRelampago()">
+                        🔄 Atualizar Desconto
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- COMBOS -->
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm border-success">
+
+                <h6 class="fw-bold text-success mb-3">
+                    🎁 Montar Novo Combo
+                </h6>
+
+                <div class="mb-3">
+                    <label class="small fw-bold">Nome do Combo</label>
+                    <input type="text"
+                           id="combo-nome"
+                           class="form-control"
+                           placeholder="Ex: Kit Volta às Aulas">
+                </div>
+
+                <div class="row g-2 align-items-end mb-3">
+
+                    <div class="col-md-6">
+                        <label class="small fw-bold">Selecionar Produto</label>
+                        <select id="combo-produto" class="form-select">
+                            <option selected disabled>Escolher produto...</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="small fw-bold">Qtd</label>
+                        <input type="number"
+                               id="combo-qtd"
+                               class="form-control"
+                               value="1"
+                               min="1">
+                    </div>
+
+                    <div class="col-md-3">
+                        <button class="btn btn-outline-success w-100"
+                                onclick="adicionarItemCombo()">
+                            + Adicionar
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="lista-itens-combo"
+                     class="border rounded p-3 mb-3"
+                     style="min-height:80px; background:#f8fff8;">
+                    <small class="text-muted">
+                        Nenhum item adicionado ainda.
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="small fw-bold">Desconto (%)</label>
+                    <input type="number"
+                           id="combo-desconto"
+                           class="form-control"
+                           value="0"
+                           min="0"
+                           max="100">
+                </div>
+
+                <div class="border-top pt-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Preço Original:</span>
+                        <span id="combo-total-original">R$ 0,00</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between fw-bold text-success">
+                        <span>Preço Final:</span>
+                        <span id="combo-total-final">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-success w-100 mt-3 fw-bold"
+                        onclick="salvarCombo()">
+                    🚀 Salvar Combo
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>

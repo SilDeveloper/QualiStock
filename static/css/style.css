@@ -1,0 +1,152 @@
+/* ================= BASE ================= */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(-45deg, #102542, #CDD7D6, #247BA0, #80727B);
+    background-size: 400% 400%;
+    animation: gradient-animado 15s ease infinite;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes gradient-animado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= COMPONENTES ================= */
+
+.card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 15px !important;
+    border: none !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    background: rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* ================= SIDEBAR ================= */
+
+/* ================= SIDEBAR CLARA ================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: #f4f4f4;
+    padding: 20px 0;
+    z-index: 1000;
+    border-right: 1px solid #e0e0e0;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px 20px 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #444;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.2s ease;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background: #eaeaea;
+}
+
+.menu-item .icon {
+    font-size: 18px;
+}
+
+/* ================= HISTÓRICO SCROLL ================= */
+
+#historico-notas::-webkit-scrollbar {
+    width: 5px;
+}
+
+#historico-notas::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* ================= UTILITÁRIOS ================= */
+
+.border-dashed {
+    border: 2px dashed #999 !important;
+    font-family: monospace;
+    background: #fffceb !important;
+    color: #333;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 15px 0;
+}
+
+/* mantém footer no final */
+html {
+    height: 100%;
+}
+
+body > .container {
+    flex: 1;
+}
+
+/* ================= LAYOUT DASHBOARD ================= */
+
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .menu-text {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-title {
+    display: none;
+}
+
+.sidebar.collapsed .menu-item {
+    justify-content: center;
+}

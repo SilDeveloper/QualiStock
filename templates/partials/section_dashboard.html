@@ -1,0 +1,90 @@
+<!-- ================= SEÇÃO DASHBOARD ================= -->
+<section id="dashboard-section">
+
+    <h4 class="fw-bold mb-4">Painel de Controle</h4>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm card-meta">
+                <small class="text-muted fw-bold">META DE VENDAS</small>
+
+                <h2 class="fw-bold mt-2">
+                    <span id="meta-atual">0</span> / 10 vendas
+                </h2>
+
+                <div class="progress mt-3" style="height:8px;">
+                    <div id="barra-meta"
+                        class="progress-bar bg-primary"
+                        style="width:0%">
+                    </div>
+                </div>
+
+                <small id="meta-texto" class="text-muted">
+                    0% da meta atingida
+                </small>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm card-usuarios">
+                <small class="text-muted fw-bold">USUÁRIOS ONLINE</small>
+                <h2 class="fw-bold mt-2">1</h2>
+                <small class="text-success">● Sistema ativo</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <h5 class="fw-bold mb-0">
+                📜 Histórico de Vendas
+            </h5>
+
+            <div class="mt-3 d-flex gap-2">
+
+                <span class="badge bg-success-subtle text-success">
+                    <span id="total-realizadas">0</span> Realizadas
+                </span>
+
+                <span class="badge bg-danger-subtle text-danger">
+                    <span id="total-canceladas">0</span> Canceladas
+                </span>
+
+                <span id="status-historico"
+                    class="badge bg-secondary d-none">
+                    Ativo
+                </span>
+
+            </div>
+        </div>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Data/Hora</th>
+                    <th>Valor</th>
+                    <th>Operador</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="log-vendas">
+                <tr>
+                    <td colspan="3" class="text-muted text-center">
+                        Nenhuma venda registrada ainda.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3">
+            <button id="btn-limpar-log"
+                    class="btn btn-sm btn-outline-danger d-none"
+                    onclick="limparLogVendas()">
+                🗑️ Limpar Histórico
+            </button>
+        </div>
+    </div>
+
+</section>
