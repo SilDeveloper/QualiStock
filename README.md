@@ -127,7 +127,7 @@ http://127.0.0.1:5000
 
 ## 🎞️ Apresentação do Projeto
 
-![Capa da apresentação](./capa.png)
+![Capa da apresentação](./Capa.png)
 
 🔗 [Visualizar apresentação completa](https://www.canva.com/design/DAHCqd5eyhM/6gPM-yym4JoFTX8RgGyuNg/edit?utm_content=DAHCqd5eyhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
