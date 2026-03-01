@@ -103,7 +103,7 @@ QualiStock/
 │
 └── sistema.db
 
----
+```
 
 ## ⚙️ Como Executar Localmente
 
