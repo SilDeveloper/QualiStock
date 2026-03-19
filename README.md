@@ -1,3 +1,8 @@
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-black)
+![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey)
+![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-yellow)
+
 # 📦 QualiStock
 ### Sistema Inteligente de Gestão de Estoque
 
