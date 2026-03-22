@@ -134,6 +134,6 @@ http://127.0.0.1:5000
 
 ![Capa da apresentação](./Capa.png)
 
-🔗 [Visualizar apresentação completa](https://www.canva.com/design/DAHCqd5eyhM/6gPM-yym4JoFTX8RgGyuNg/edit?utm_content=DAHCqd5eyhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+🔗 [Visualizar apresentação completa](https://www.canva.com/design/DAHCqd5eyhM/_vztx1o0jsvXrk8gn9BZYw/view?utm_content=DAHCqd5eyhM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd6c39154bc)
 
 Projeto desenvolvido para fins acadêmicos e portfólio profissional.
