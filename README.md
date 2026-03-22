@@ -130,9 +130,9 @@ http://127.0.0.1:5000
 ✔ Geração de relatórios  
 ✔ Estrutura modular organizada  
 
-## 🎞️ Apresentação do Projeto
-
 ![Capa da apresentação](./Capa.png)
+
+📊 Apresentação detalhada do projeto (arquitetura, telas e funcionalidades):
 
 🔗 [Visualizar apresentação completa](https://www.canva.com/design/DAHCqd5eyhM/_vztx1o0jsvXrk8gn9BZYw/view?utm_content=DAHCqd5eyhM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd6c39154bc)
 
