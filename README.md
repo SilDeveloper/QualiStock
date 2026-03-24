@@ -121,6 +121,14 @@ python app.py
 3. Acesse:
 http://127.0.0.1:5000
 
+## Executar o sistema
+
+Baixe o executável em **Releases**:
+
+QualiStock.exe
+
+Após baixar, basta executar o arquivo para abrir o sistema.
+
 ---
 
 ## 📌 Status do Projeto
